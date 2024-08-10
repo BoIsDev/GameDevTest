@@ -1,5 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System.IO;
+
+[System.Serializable]
+//Get the data of the gameObject
+public class GameObjectData
+{
+    public string type;
+    public Vector3 position;
+    public Quaternion rotation;
+}
+
+[System.Serializable]
+//Get the data of the game
+public class GameData
+{
+    public List<GameObjectData> objects = new List<GameObjectData>();
+    public int redCount;
+    public int blueCount;
+    public int yellowCount;
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +47,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // Load saved data
+        LoadData();
         UpdateUI();
     }
 
@@ -37,9 +61,11 @@ public class GameManager : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) && !isPlaced)
             {
+
                 PlaceObject();
                 UpdateUI();
             }
+           
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -50,6 +76,11 @@ public class GameManager : MonoBehaviour
             {
                 HandleRightClick(ray);
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SaveData();
+            Application.Quit();
         }
     }
 
@@ -66,13 +97,11 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
     // Select the object by index
     public void SelectObject(int index)
     {
-        if (pendingObj != null)
-        {
-            Destroy(pendingObj);
-        }
+        if (pendingObj != null) return;
         if (!CheckCount(index)) return;
         pendingObj = SpawnItem.Instance.GetObjItem(objects[index], pos, Quaternion.identity);
         UpdateColor(index, -1);
@@ -109,6 +138,7 @@ public class GameManager : MonoBehaviour
             case "Yellow": UpdateColor(2, amount); break;
         }
     }
+
     void PlaceObject()
     {
         pendingObj = null;
@@ -119,5 +149,62 @@ public class GameManager : MonoBehaviour
         txtBlue.text = blueCount.ToString();
         txtRed.text = redCount.ToString();
         txtYellow.text = yellowCount.ToString();
+    }
+
+    private void SaveData()
+    {
+        GameData gameData = new GameData
+        {
+            redCount = redCount,
+            blueCount = blueCount,
+            yellowCount = yellowCount
+        };
+
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Blocks"))
+        {
+            GameObjectData data = new GameObjectData
+            {
+                type = obj.name,
+                position = obj.transform.position,
+                rotation = obj.transform.rotation
+            };
+            gameData.objects.Add(data);
+        }
+
+        string json = JsonUtility.ToJson(gameData, true);
+        string path = Application.persistentDataPath + "/gameData.json";
+        File.WriteAllText(path, json);
+    }
+
+    private void LoadData()
+    {
+        string path = Application.persistentDataPath + "/gameData.json";
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            GameData gameData = JsonUtility.FromJson<GameData>(json);
+
+            redCount = gameData.redCount;
+            blueCount = gameData.blueCount;
+            yellowCount = gameData.yellowCount;
+
+            foreach (GameObjectData data in gameData.objects)
+            {
+                GameObject obj = Instantiate(GetPrefabByName(data.type), data.position, data.rotation);
+                obj.tag = "Blocks";
+            }
+        }
+    }
+
+    private GameObject GetPrefabByName(string name)
+    {
+        foreach (GameObject obj in objects)
+        {
+            if (obj.name == name)
+            {
+                return obj;
+            }
+        }
+        return null;
     }
 }
