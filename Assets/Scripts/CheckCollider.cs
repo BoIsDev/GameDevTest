@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockColor : MonoBehaviour
+public class CheckCollider : MonoBehaviour
 {
     public void OnTriggerEnter(Collider other)
     {
@@ -20,5 +20,4 @@ public class BlockColor : MonoBehaviour
             GameManager.Instance.isPlaced = false;
         }
     }
-    
 }

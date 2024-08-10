@@ -193,6 +193,7 @@ public class GameManager : MonoBehaviour
             {
                 GameObject obj = Instantiate(GetPrefabByName(data.type), data.position, data.rotation);
                 obj.tag = "Blocks";
+                obj.name = data.type;
             }
         }
     }

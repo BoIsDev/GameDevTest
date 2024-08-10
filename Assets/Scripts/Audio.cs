@@ -35,7 +35,6 @@ public class Audio : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
-        Debug.Log("Playing sound: " + clip.name);
 
     }
 

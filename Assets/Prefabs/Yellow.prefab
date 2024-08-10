@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 140579883539204873}
   - component: {fileID: 5451231506335395353}
   - component: {fileID: 5324841289631324934}
-  - component: {fileID: 8265930146709435613}
+  - component: {fileID: -104087284916821747}
   - component: {fileID: 4721085191916027996}
   m_Layer: 7
   m_Name: Yellow
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8265930146709435613
+--- !u!114 &-104087284916821747
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,10 +116,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5685872221800431145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08c4d319e3e215840b523a4569ec3403, type: 3}
+  m_Script: {fileID: 11500000, guid: 20b1e9f7c145c7d4b8cdb8d4f79ff3bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Count: 10
 --- !u!54 &4721085191916027996
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2380992686612836601}
   - component: {fileID: 6622159538657171914}
   - component: {fileID: 3836449650970704711}
-  - component: {fileID: 4383232101048250200}
   - component: {fileID: 8851803522857616574}
   - component: {fileID: 3742818876609206351}
+  - component: {fileID: 2997628932755497575}
   m_Layer: 7
   m_Name: Blue
   m_TagString: Blocks
@@ -86,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4383232101048250200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3793615116023672650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08c4d319e3e215840b523a4569ec3403, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Count: 10
 --- !u!65 &8851803522857616574
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -147,3 +134,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2997628932755497575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3793615116023672650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20b1e9f7c145c7d4b8cdb8d4f79ff3bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

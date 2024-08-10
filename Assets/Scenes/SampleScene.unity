@@ -417,9 +417,9 @@ RectTransform:
   - {fileID: 2108167467}
   m_Father: {fileID: 228127827}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 106.6273, y: -30}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &588493817
@@ -644,9 +644,9 @@ RectTransform:
   - {fileID: 2047075236}
   m_Father: {fileID: 228127827}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 30, y: -30}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &805171028
@@ -777,9 +777,9 @@ RectTransform:
   - {fileID: 520138246}
   m_Father: {fileID: 228127827}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 183.2546, y: -30}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &880978831
@@ -1527,8 +1527,8 @@ MonoBehaviour:
   - {fileID: 1057420913405644008, guid: e0b0b4d458e06ae4bbf70d71ef698547, type: 3}
   - {fileID: 5685872221800431145, guid: c02e984ba166dab44b3d0c19e92a4c62, type: 3}
   pendingObj: {fileID: 0}
-  redCount: 10
-  blueCount: 10
+  redCount: 0
+  blueCount: 0
   yellowCount: 10
   isPlaced: 0
 --- !u!114 &1884310543
