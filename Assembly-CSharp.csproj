@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\BlockColor.cs" />
     <Compile Include="Assets\Scripts\SpawnItem.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Audio.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

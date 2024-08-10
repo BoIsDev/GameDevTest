@@ -63,9 +63,9 @@ public class GameManager : MonoBehaviour
             {
 
                 PlaceObject();
+                Audio.Instance.PlaySFX(Audio.Instance.PickUp);
                 UpdateUI();
             }
-           
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
         {
             if (hit.collider != null && hit.collider.gameObject.CompareTag("Blocks"))
             {
+                Audio.Instance.PlaySFX(Audio.Instance.Get);
                 SpawnItem.Instance.ReturnObjePool(hit.collider.gameObject);
                 hit.collider.gameObject.SetActive(false);
                 UpdateColorByName(hit.collider.transform.name, 1);
