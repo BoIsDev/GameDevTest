@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
-
-
 [System.Serializable]
 //Get the data of the gameObject
 public class GameObjectData
@@ -26,16 +24,14 @@ public class GameData
 
 public class GridManager : MonoBehaviour
 {
-    public float cellSize = 1f;  // Size of each cell in the Grid
-    public LayerMask raycastLayerMask; // Layer that Raycast will check
-    public LayerMask raycastBackground; // Layer that Raycast will check
+    public float cellSize = 1f;
+    public LayerMask raycastLayerMask;
+    public LayerMask raycastBackground;
     public GameObject[] objects;
-    private Vector3 pos;
     public int redCount, blueCount, yellowCount = 10;
-    public float cubeHeight = 1f; // Height of each Cube
     public GameObject selectedObject; // Selected object
     [SerializeField] private Text txtRed, txtBlue, txtYellow;
-
+    private Vector3 pos;
     void Start()
     {
         LoadData();
@@ -54,6 +50,8 @@ public class GridManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             DropObject();
+            Audio.Instance.PlaySFX(Audio.Instance.PickUp);
+
         }
 
         // Check if the user clicks the right mouse button to handle the object
@@ -63,7 +61,6 @@ public class GridManager : MonoBehaviour
             HandleRightClick(ray);
         }
 
-        // Check if the user presses the "ESC" key to save and quit
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SaveAndQuit();
@@ -78,12 +75,9 @@ public class GridManager : MonoBehaviour
             DragObject();
         }
     }
-
     public void CreateBox(int index)
     {
         if (selectedObject != null) return;
-
-        // Use raycast to determine the position of the mouse cursor in the 3D world
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -103,7 +97,7 @@ public class GridManager : MonoBehaviour
     private void HandleRightClick(Ray ray)
     {
         RaycastHit hit;
-        // Check if the object is a block
+        // Check if the object is a block and destroy it
         if (Physics.Raycast(ray, out hit, 1000, raycastLayerMask))
         {
             if (hit.collider != null && hit.collider.gameObject.CompareTag("Blocks"))
@@ -141,6 +135,7 @@ public class GridManager : MonoBehaviour
             {
                 Vector3 worldPosition = hit.point;
                 selectedObject.transform.position = new Vector3(worldPosition.x, worldPosition.y, worldPosition.z);
+
             }
             else
             {
@@ -254,8 +249,7 @@ public class GridManager : MonoBehaviour
             }
         }
     }
-
-    private GameObject GetPrefabByName(string name)
+        private GameObject GetPrefabByName(string name)
     {
         foreach (GameObject obj in objects)
         {
